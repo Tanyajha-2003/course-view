@@ -17,8 +17,8 @@ const app = express();
 // app.use(cors());
 app.use(cors({
   origin: [
-    "https://course-view-1.onrender.com",   // your frontend
-    "https://course-view-1fd1.onrender.com" // your backend (optional)
+    "https://course-view-1.onrender.com",   
+    "https://course-view-1fd1.onrender.com"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
