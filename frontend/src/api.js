@@ -1,5 +1,4 @@
 import axios from 'axios';
-import axios from 'axios';
 const API = axios.create({ baseURL: "https://course-view-1fd1.onrender.com/api" || '/api' });
 API.interceptors.request.use(config=>{
   const token = localStorage.getItem('token');
