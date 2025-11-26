@@ -79,6 +79,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Make Express serve the React build folder
+// --- Serve React Frontend in Production ---
+const frontendPath = path.join(__dirname, "../frontend/build");
+app.use(express.static(frontendPath));
+
+// For any route NOT starting with /api, return React index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 // ------------------------
 // MongoDB Connection
