@@ -14,7 +14,16 @@ import adminRoutes from './routes/adminRoutes.js';
 import docRoutes from './routes/docRoutes.js';
 import paymentRoutes from "./routes/paymentRoutes.js";
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: [
+    "https://course-view-1.onrender.com",   // your frontend
+    "https://course-view-1fd1.onrender.com" // your backend (optional)
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use("/api/payment", paymentRoutes);
 app.use('/api/auth', authRoutes);
