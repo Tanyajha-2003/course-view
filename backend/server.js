@@ -33,6 +33,17 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/docs', docRoutes);
 app.use("/api/videos", courseRoutes);
 const PORT = process.env.PORT || 5001;
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
 const MONGODB_URI = process.env.MONGODB_URI;
 if(!MONGODB_URI) {
   console.error('MONGODB_URI missing in env');
